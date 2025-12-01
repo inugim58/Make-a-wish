@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>🎄 패턴 디자인 스튜디오: 부드러운 하트 반복 패턴 🎁</title>
+    <style>
+        /* CSS 스타일은 이전과 동일하게 유지됩니다. */
+        @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+        
+        body {
+            font-family: 'Jua', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FDFDFD;
+            color: #333;
+        }
+        .header {
+            background-color: #C93030;
+            color: white;
+            padding: 25px 0;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.2em;
+        }
+        .main-content {
+            display: flex;
+            max-width: 1200px;
+            margin: 30px auto;
+            background-color: #FFFFFF;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            overflow: hidden;
+            min-height: 700px;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #F8F8F8;
+            padding: 20px 0;
+            border-right: 2px solid #DCDCDC;
+        }
+        .sidebar h3 {
+            padding: 0 20px;
+            margin-top: 0;
+            color: #006400;
+            border-bottom: 2px dashed #DCDCDC;
+            padding-bottom: 15px;
+            margin-bottom: 10px;
+        }
+        .menu-item {
+            padding: 18px 25px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #333;
+            transition: background-color 0.3s, color 0.3s;
+            border-bottom: 1px solid #EDEDED;
+        }
+        .menu-item:hover {
+            background-color: #FFD700;
+            color: #333;
+        }
+        .menu-item.active {
+            background-color: #C93030;
+            color: white;
+            border-left: 5px solid #FFD700;
+        }
+        
+        /* 컨트롤 스타일 */
+        #patternControls {
+            width: 90%;
+            margin: 15px auto;
+            padding: 15px;
+            box-sizing: border-box;
+            background-color: #E6E6E6;
+            border-radius: 8px;
+        }
+        .control-group label {
+            color: #006400;
+        }
+        input[type="number"], input[type="color"], select {
+            width: 90%;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 5px;
+        }
+
+        .create-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #006400; 
+            color: white;
+            border: 2px solid #FFD700;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 15px;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+        .create-button:hover {
+            background-color: #004d00;
+        }
+        
+        .save-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #C93030; 
+            color: white;
+            border: 2px solid #FFD700;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px; 
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+        .save-button:hover {
+            background-color: #992525;
+        }
+        /* ----------------------------------------------------- */
+
+        .canvas-container {
+            flex-grow: 1;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        #currentPatternTitle {
+            margin-bottom: 20px;
+            font-size: 2.0em;
+            color: #C93030;
+        }
+        #patternCanvas {
+            border: 10px solid #FFD700;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(201, 48, 48, 0.3);
+            border-radius: 4px;
+        }
+        #instructionText {
+            margin-top: 15px;
+            color: #555;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>패턴 제작소</h1>
+        <p>본인만의 패턴을 만들어 보세요.</p>
+    </div>
+
+    <div class="main-content">
+        <div class="sidebar">
+            <h3>카테고리</h3>
+            
+            <div id="custom" class="menu-item active" onclick="changeCategory('custom')">나만의 하트 패턴 그리기</div>
+            <div id="bowl" class="menu-item" onclick="changeCategory('bowl')">그릇 목업 적용</div>
+            <div id="scarf" class="menu-item" onclick="changeCategory('scarf')">목도리 목업 적용</div>
+            <div id="sock" class="menu-item" onclick="changeCategory('sock')">양말 목업 적용</div>
+
+            <div id="patternControls">
+                <h4>패턴 설정</h4>
+                <div class="control-group">
+                    <label for="pType">패턴 종류:</label>
+                    <select id="pType" disabled>
+                        <option value="soft_heart_pattern">부드러운 하트 반복 패턴</option>
+                        </select>
+                </div>
+                <div class="control-group">
+                    <label for="moduleSizeInput">모듈 크기 (픽셀, 20~100):</label>
+                    <input type="number" id="moduleSizeInput" value="40" min="20" max="100" step="5">
+                </div>
+                <div class="control-group">
+                    <label for="pColor1">색상 1 (하트색 A):</label>
+                    <input type="color" id="pColor1" value="#C93030"> </div>
+                <div class="control-group">
+                    <label for="pColor2">색상 2 (하트색 B):</label>
+                    <input type="color" id="pColor2" value="#FFFFFF"> </div>
+                <div class="control-group">
+                    <label for="pColor3">색상 3 (배경색):</label>
+                    <input type="color" id="pColor3" value="#006400"> </div>
+                
+                <button class="create-button" onclick="previewPattern()">패턴 제작 (미리보기)</button>
+                
+                <button class="save-button" onclick="savePatternSettings()">색상 및 크기 저장</button>
+
+            </div>
+        </div>
+
+        <div class="canvas-container">
+            <h2 id="currentPatternTitle">나만의 패턴 그리기</h2>
+            <canvas id="patternCanvas" width="600" height="600"></canvas>
+            <p id="instructionText">모듈 크기를 변경하고 "패턴 제작"을 눌러 밀도를 조절해 보세요.</p>
+        </div>
+    </div>
+<script src="patten.js"></script>
+</body>
+</html>
