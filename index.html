@@ -2,201 +2,548 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>🎄 패턴 디자인 스튜디오: 부드러운 하트 반복 패턴 🎁</title>
+    <title>디지털 디자인 패턴 스튜디오</title>
     <style>
-        /* CSS 스타일은 이전과 동일하게 유지됩니다. */
         @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
         
         body {
-            font-family: 'Jua', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #FDFDFD;
-            color: #333;
-        }
-        .header {
-            background-color: #C93030;
-            color: white;
-            padding: 25px 0;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-        .header h1 {
-            margin: 0;
-            font-size: 2.2em;
-        }
-        .main-content {
-            display: flex;
-            max-width: 1200px;
-            margin: 30px auto;
-            background-color: #FFFFFF;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            border-radius: 12px;
-            overflow: hidden;
-            min-height: 700px;
-        }
-        .sidebar {
-            width: 250px;
             background-color: #F8F8F8;
-            padding: 20px 0;
-            border-right: 2px solid #DCDCDC;
-        }
-        .sidebar h3 {
-            padding: 0 20px;
-            margin-top: 0;
-            color: #006400;
-            border-bottom: 2px dashed #DCDCDC;
-            padding-bottom: 15px;
-            margin-bottom: 10px;
-        }
-        .menu-item {
-            padding: 18px 25px;
-            cursor: pointer;
-            font-weight: bold;
-            color: #333;
-            transition: background-color 0.3s, color 0.3s;
-            border-bottom: 1px solid #EDEDED;
-        }
-        .menu-item:hover {
-            background-color: #FFD700;
-            color: #333;
-        }
-        .menu-item.active {
-            background-color: #C93030;
-            color: white;
-            border-left: 5px solid #FFD700;
+            color: #f0e5d7;
+            scroll-behavior: smooth; /* 부드러운 스크롤 효과 */
         }
         
-        /* 컨트롤 스타일 */
-        #patternControls {
-            width: 90%;
-            margin: 15px auto;
-            padding: 15px;
-            box-sizing: border-box;
-            background-color: #E6E6E6;
-            border-radius: 8px;
-        }
-        .control-group label {
-            color: #006400;
-        }
-        input[type="number"], input[type="color"], select {
-            width: 90%;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            margin-bottom: 5px;
+        /* 전체 섹션 스타일 */
+        .page-section {
+            min-height: 100vh; /* 화면 전체 높이 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 50px 0;
         }
 
+        /* 1. 타이틀 페이지 */
+        #title-page {
+            background-color: #6f1627;
+            color: #f0e5d7;
+        }
+        #title-page h1 { font-size: 4em; margin-bottom: 20px; }
+        #title-page p { font-size: 1.5em; }
+        .scroll-down { margin-top: 50px; font-size: 0.9em; opacity: 0.7; }
+        
+        /* 2. 프로젝트 소개 페이지 */
+        #intro-page {
+            background-color: #33583d;
+            padding: 80px 10%;
+            text-align: left;
+        }
+        #intro-page h2 { color: #f0e5d7; font-size: 2.5em; margin-bottom: 20px; text-align: center; }
+        .concept-box {
+            display: flex;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        .concept-item {
+            flex: 1;
+            padding: 20px;
+            /* 테두리 색상 조정 */
+            border: 2px solid #557960; 
+            background-color: #44684f;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            color: #f0e5d7;
+        }
+        .concept-item h3 { 
+            /* 제목 색상 조정 */
+            color: #fce8a9; 
+            margin-top: 0; 
+        }
+        .concept-item p {
+            color: #d1c1b1;
+        }
+
+        /* 3. 패턴 제작 페이지 */
+        #editor-page {
+            background-color: #f0e5d7; 
+            flex-direction: row; 
+            align-items: center; 
+            justify-content: center;
+            padding: 80px 5%;
+        }
+        #controls-container {
+            width: 350px;
+            background-color: #6f1627; 
+            color: #f0e5d7;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+            margin-right: 60px;
+            height: fit-content; 
+        }
+        #controls-container h2 {
+            color: #fce8a9; 
+            margin-top: 0;
+            border-bottom: 2px dashed #a03c4f;
+            padding-bottom: 10px;
+        }
+        #controls-container h4 {
+            color: #f0e5d7;
+            margin-top: 20px;
+        }
+        #patternControls {
+            display: flex;
+            flex-wrap: wrap; 
+            gap: 15px; 
+        }
+        .control-group { 
+            margin-bottom: 15px; 
+            text-align: left;
+            flex: 1 1 calc(50% - 15px); 
+            min-width: 120px; 
+        }
+        #moduleSizeGroup {
+             flex: 1 1 100%; 
+        }
+        .control-group label { 
+            color: #fce8a9; 
+            font-weight: bold; 
+            display: block; 
+            margin-bottom: 5px; 
+        }
+        input[type="number"], input[type="color"] {
+            width: 90%;
+            padding: 8px;
+            border: 1px solid #a03c4f;
+            border-radius: 5px;
+            background-color: #4f0e1a; 
+            color: #f0e5d7; 
+        }
+        input[type="color"] {
+            height: 40px;
+        }
+        #button-group {
+            flex: 1 1 100%;
+            margin-top: 10px;
+        }
         .create-button {
             width: 100%;
-            padding: 10px;
-            background-color: #006400; 
+            padding: 12px;
+            background-color: #33583d; 
             color: white;
-            border: 2px solid #FFD700;
             border-radius: 6px;
-            cursor: pointer;
-            margin-top: 15px;
             font-weight: bold;
             transition: background-color 0.2s;
+            margin-top: 5px;
         }
-        .create-button:hover {
-            background-color: #004d00;
-        }
+        .create-button:hover { background-color: #24402b; }
         
         .save-button {
             width: 100%;
-            padding: 10px;
-            background-color: #C93030; 
-            color: white;
-            border: 2px solid #FFD700;
+            padding: 12px;
+            background-color: #fce8a9; 
+            color: #6f1627; 
             border-radius: 6px;
-            cursor: pointer;
-            margin-top: 10px; 
             font-weight: bold;
             transition: background-color 0.2s;
+            margin-top: 10px;
         }
-        .save-button:hover {
-            background-color: #992525;
-        }
-        /* ----------------------------------------------------- */
-
-        .canvas-container {
+        .save-button:hover { background-color: #f0d889; }
+        #canvas-container {
             flex-grow: 1;
-            padding: 30px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
         }
-        #currentPatternTitle {
-            margin-bottom: 20px;
-            font-size: 2.0em;
-            color: #C93030;
+        #canvas-container h3 {
+            color: #6f1627; 
+            font-size: 2em;
         }
         #patternCanvas {
-            border: 10px solid #FFD700;
+            border: 10px solid #a03c4f; 
             background-color: #fff;
-            box-shadow: 0 0 20px rgba(201, 48, 48, 0.3);
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
             border-radius: 4px;
         }
         #instructionText {
-            margin-top: 15px;
-            color: #555;
+            margin-top: 15px; 
+            color: #6f1627; 
             font-style: italic;
         }
+        
+        /* 4. 목업 페이지 (수정된 스타일) */
+        #mockup-page {
+            background-color: #44684f;
+            color: #f0e5d7;
+            padding: 80px 0;
+            min-height: 100vh; /* 전체 화면 사용 */
+        }
+        #mockup-page h2 { 
+            color: #fce8a9; 
+            font-size: 2.5em; 
+            margin-bottom: 40px; 
+        }
+        
+        /* 카테고리 버튼 스타일 */
+        .category-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+        .category-button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: #33583d;
+            color: #f0e5d7;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        .category-button:hover {
+            background-color: #557960;
+            transform: translateY(-2px);
+        }
+        .category-button.active {
+            background-color: #6f1627; /* 활성화된 버튼 색상 */
+            border: 3px solid #fce8a9;
+        }
+        
+        /* 이미지 갤러리 스타일 */
+        #image-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 300px; /* 갤러리 최소 높이 지정 */
+            background-color: rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        .mockup-image-box {
+            width: 280px;
+            height: 280px;
+            background-color: #557960; /* 비어있을 때 배경색 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fce8a9;
+            font-style: italic;
+            border-radius: 6px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            /* 나중에 실제 이미지를 넣을 때 아래 속성 제거 */
+            font-size: 1.1em;
+            text-align: center;
+        }
+
     </style>
 </head>
 <body>
 
-    <div class="header">
-        <h1>패턴 제작소</h1>
-        <p>본인만의 패턴을 만들어 보세요.</p>
-    </div>
+    <section id="title-page" class="page-section">
+        <nav style="position: fixed; top: 0; left: 0; width: 100%; background: rgba(0,0,0,0.8); padding: 10px 0; z-index: 100;">
+            <a href="#title-page" style="color: white; margin: 0 15px; text-decoration: none;">🏠 HOME</a>
+            <a href="#intro-page" style="color: white; margin: 0 15px; text-decoration: none;">💡 소개</a>
+            <a href="#editor-page" style="color: white; margin: 0 15px; text-decoration: none;">🎨 패턴 제작</a>
+            <a href="#mockup-page" style="color: white; margin: 0 15px; text-decoration: none;">🖼️ 목업</a>
+        </nav>
+        <h1>HTML CANVAS 패턴 스튜디오</h1>
+        <p>코드를 디자인하는 디자이너를 위한 패턴 제작 프로젝트</p>
+        <p class="scroll-down">아래로 스크롤하여 프로젝트를 확인하세요 ↓</p>
+    </section>
 
-    <div class="main-content">
-        <div class="sidebar">
-            <h3>카테고리</h3>
+    <section id="intro-page" class="page-section">
+        <h2>💡 프로젝트 소개: HTML Canvas란?</h2>
+        <p style="font-size: 1.2em; margin-bottom: 40px; color: #f0e5d7;">
+            이 프로젝트는 **HTML Canvas**와 **JavaScript**를 활용하여 동적인 반복 패턴을 생성하는 과정을 보여줍니다.
+            Canvas는 웹 페이지에 그래픽을 그리기 위한 '빈 도화지'와 같습니다.
+        </p>
+
+        <div class="concept-box">
+            <div class="concept-item">
+                <h3>Canvas 개념</h3>
+                <p>
+                    HTML `<canvas>` 태그를 사용하여 그래픽 요소를 그릴 영역을 정의합니다.
+                    JavaScript의 **`getContext('2d')`**를 통해 2D 그래픽 컨텍스트를 가져와 선, 도형, 이미지 등을 조작합니다.
+                </p>
+            </div>
+            <div class="concept-item">
+                <h3>도형 그리기</h3>
+                <p>
+                    **`ctx.beginPath()`**로 새로운 경로를 시작하고, **`ctx.moveTo()`**, **`ctx.lineTo()`**, **`ctx.arc()`** 등의 명령어로 도형의 형태를 정의합니다.
+                    **`ctx.fillStyle`**로 색상을 지정하고 **`ctx.fill()`**을 사용해 도형을 채웁니다.
+                </p>
+            </div>
+            <div class="concept-item">
+                <h3>반복 패턴</h3>
+                <p>
+                    **`for` 반복문**을 사용하여 특정 모듈을 캔버스 크기만큼 반복적으로 그려 넣습니다.
+                    각 모듈의 위치(x, y)와 크기를 조절하여 다양한 **타일 패턴**을 생성합니다.
+                </p>
+            </div>
+        </div>
+        <div style="margin-top: 50px; text-align: center;">
+             <a href="#editor-page" class="save-button" style="width: 30%;">패턴 제작 페이지로 이동 ⬇️</a>
+        </div>
+    </section>
+
+    <section id="editor-page" class="page-section">
+        
+        <div id="controls-container">
+            <h2>🎨 하트 패턴 제작</h2>
+            <h4>패턴 설정을 변경하세요</h4>
             
-            <div id="custom" class="menu-item active" onclick="changeCategory('custom')">나만의 하트 패턴 그리기</div>
-            <div id="bowl" class="menu-item" onclick="changeCategory('bowl')">그릇 목업 적용</div>
-            <div id="scarf" class="menu-item" onclick="changeCategory('scarf')">목도리 목업 적용</div>
-            <div id="sock" class="menu-item" onclick="changeCategory('sock')">양말 목업 적용</div>
-
             <div id="patternControls">
-                <h4>패턴 설정</h4>
-                <div class="control-group">
-                    <label for="pType">패턴 종류:</label>
-                    <select id="pType" disabled>
-                        <option value="soft_heart_pattern">부드러운 하트 반복 패턴</option>
-                        </select>
-                </div>
-                <div class="control-group">
+                
+                <div id="moduleSizeGroup" class="control-group">
                     <label for="moduleSizeInput">모듈 크기 (픽셀, 20~100):</label>
                     <input type="number" id="moduleSizeInput" value="40" min="20" max="100" step="5">
                 </div>
-                <div class="control-group">
-                    <label for="pColor1">색상 1 (하트색 A):</label>
-                    <input type="color" id="pColor1" value="#C93030"> </div>
-                <div class="control-group">
-                    <label for="pColor2">색상 2 (하트색 B):</label>
-                    <input type="color" id="pColor2" value="#FFFFFF"> </div>
-                <div class="control-group">
-                    <label for="pColor3">색상 3 (배경색):</label>
-                    <input type="color" id="pColor3" value="#006400"> </div>
                 
-                <button class="create-button" onclick="previewPattern()">패턴 제작 (미리보기)</button>
-                
-                <button class="save-button" onclick="savePatternSettings()">색상 및 크기 저장</button>
+                <div id="colorGroup1" class="control-group">
+                    <label id="colorLabel1" for="pColor1">색상 1 (하트색 A):</label>
+                    <input type="color" id="pColor1" value="#C93030"> 
+                </div>
+                <div id="colorGroup2" class="control-group">
+                    <label id="colorLabel2" for="pColor2">색상 2 (하트색 B):</label>
+                    <input type="color" id="pColor2" value="#FFFFFF"> 
+                </div>
+                <div id="colorGroup3" class="control-group">
+                    <label id="colorLabel3" for="pColor3">색상 3 (배경색):</label>
+                    <input type="color" id="pColor3" value="#006400"> 
+                </div>
 
+                <div id="button-group" class="control-group">
+                    <button class="create-button" onclick="previewPattern()">패턴 제작 (미리보기)</button>
+                    <button class="save-button" onclick="savePatternSettings()">설정 저장</button>
+                </div>
             </div>
         </div>
 
-        <div class="canvas-container">
-            <h2 id="currentPatternTitle">나만의 패턴 그리기</h2>
+        <div id="canvas-container">
+            <h3>생성된 하트 패턴 미리보기</h3>
             <canvas id="patternCanvas" width="600" height="600"></canvas>
-            <p id="instructionText">모듈 크기를 변경하고 "패턴 제작"을 눌러 밀도를 조절해 보세요.</p>
+            <p id="instructionText">
+                모듈 크기와 색상을 변경한 뒤 "패턴 제작"을 눌러 미리보기를 확인하세요.
+            </p>
         </div>
-    </div>
-<script src="patten.js"></script>
+    </section>
+
+    <section id="mockup-page" class="page-section">
+        <h2>🖼️ 목업 갤러리</h2>
+        <p style="color: #fce8a9; margin-bottom: 20px;">원하는 카테고리를 선택하여 목업 이미지를 확인하세요.</p>
+        
+        <div class="category-buttons">
+            <button class="category-button active" id="btn-scarf" onclick="showMockups('scarf')">🧣 목도리</button>
+            <button class="category-button" id="btn-glove" onclick="showMockups('glove')">🧤 장갑</button>
+            <button class="category-button" id="btn-bowl" onclick="showMockups('bowl')">🥣 그릇</button>
+        </div>
+
+        <div id="image-gallery">
+            <p style="width: 100%;">선택된 목도리 목업 이미지가 여기에 표시됩니다. (최대 4개)</p>
+            <div class="mockup-image-box">목도리 목업 1<br>(이미지 배치 공간)</div>
+            <div class="mockup-image-box">목도리 목업 2<br>(이미지 배치 공간)</div>
+            <div class="mockup-image-box">목도리 목업 3<br>(이미지 배치 공간)</div>
+            <div class="mockup-image-box">목도리 목업 4<br>(이미지 배치 공간)</div>
+        </div>
+        <p style="margin-top: 40px; color: #d1c1b1;">패턴 제작 페이지에서 설정을 저장하면, 목업 이미지에 적용할 때 이 설정값이 사용됩니다.</p>
+    </section>
+
+<script>
+    // 1. 전역 패턴 설정 변수 정의 (기존과 동일)
+    let patternSettings = {
+        type: 'soft_heart_pattern', 
+        moduleSize: 40,
+        colors: {
+            color1: '#C93030', // 하트색 A
+            color2: '#FFFFFF',  // 하트색 B
+            color3: '#006400'   // 배경색
+        }
+    };
+
+    // 2. DOM 요소 가져오기 (기존과 동일)
+    const mainCanvas = document.getElementById('patternCanvas');
+    const mainCtx = mainCanvas.getContext('2d');
+    const instructionText = document.getElementById('instructionText');
+    const galleryContainer = document.getElementById('image-gallery');
+
+    // 3. UI 초기 설정 및 업데이트 함수 (기존과 동일)
+    function initializeControls() {
+        document.getElementById('moduleSizeInput').value = patternSettings.moduleSize;
+        document.getElementById('pColor1').value = patternSettings.colors.color1;
+        document.getElementById('pColor2').value = patternSettings.colors.color2;
+        document.getElementById('pColor3').value = patternSettings.colors.color3;
+
+        previewPattern(); // 초기 패턴 미리보기 실행
+        showMockups('scarf'); // 초기 목업 페이지는 목도리를 보여줍니다.
+    }
+
+    // 4. '패턴 제작 (미리보기)' 함수 (기존과 동일)
+    function previewPattern() {
+        const tempModuleSize = parseInt(document.getElementById('moduleSizeInput').value) || 40; 
+        const validatedSize = Math.max(20, Math.min(100, tempModuleSize));
+
+        let tempColors = {
+            color1: document.getElementById('pColor1').value,
+            color2: document.getElementById('pColor2').value,
+            color3: document.getElementById('pColor3').value
+        };
+
+        drawSoftHeartPattern(mainCtx, tempColors, validatedSize);
+
+        instructionText.textContent = `💖 부드러운 하트 패턴 (크기 ${validatedSize}px) 미리보기가 생성되었습니다. 마음에 들면 "설정 저장"을 누르세요.`;
+    }
+
+    // 5. '설정 저장' 함수 (기존과 동일, 목업 업데이트 로직 제거)
+    function savePatternSettings() {
+        // 5.1. 모듈 크기 저장
+        let newSize = parseInt(document.getElementById('moduleSizeInput').value) || 40;
+        patternSettings.moduleSize = Math.max(20, Math.min(100, newSize)); 
+        document.getElementById('moduleSizeInput').value = patternSettings.moduleSize; 
+
+        // 5.2. 색상 저장
+        patternSettings.colors.color1 = document.getElementById('pColor1').value;
+        patternSettings.colors.color2 = document.getElementById('pColor2').value;
+        patternSettings.colors.color3 = document.getElementById('pColor3').value;
+
+        instructionText.textContent = `✅ 하트 패턴 설정 (${patternSettings.moduleSize}px)이 저장되었습니다! 이제 목업 갤러리에서 확인해 보세요.`;
+    }
+    
+    /* ------------------------------------------------ */
+    /* 💖 핵심 로직: 부드러운 하트 패턴 그리기 함수 (유지) 💖 */
+    /* ------------------------------------------------ */
+
+    function drawSoftHeartModule(ctx, x, y, size, color) {
+        ctx.beginPath();
+        const halfSize = size / 2;
+        const quarterSize = size / 4;
+        const eighthSize = size / 8;
+        const topY = y - halfSize * 0.4; 
+
+        ctx.moveTo(x, y + halfSize); 
+        ctx.bezierCurveTo(x - halfSize * 1.1, topY + quarterSize, x - halfSize * 0.7, topY - eighthSize, x - quarterSize, topY - eighthSize * 2);
+        ctx.bezierCurveTo(x - quarterSize * 0.5, topY - eighthSize * 3, x - eighthSize, topY - eighthSize * 3, x, topY);
+        ctx.bezierCurveTo(x + eighthSize, topY - eighthSize * 3, x + quarterSize * 0.5, topY - eighthSize * 3, x + quarterSize, topY - eighthSize * 2);
+        ctx.bezierCurveTo(x + halfSize * 0.7, topY - eighthSize, x + halfSize * 1.1, topY + quarterSize, x, y + halfSize);
+
+        ctx.closePath();
+        ctx.fillStyle = color;
+        ctx.fill();
+    }
+    
+    function drawSoftHeartPattern(ctx, colors, moduleSize) {
+        ctx.fillStyle = colors.color3; 
+        ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        
+        const moduleUnit = moduleSize; 
+        const heartSize = moduleUnit * 0.9; 
+        
+        const numCols = Math.ceil(ctx.canvas.width / moduleUnit); 
+        const numRows = Math.ceil(ctx.canvas.height / moduleUnit); 
+
+        for (let row = 0; row < numRows + 1; row++) { 
+            for (let col = 0; col < numCols + 1; col++) { 
+                
+                let offsetX = 0;
+                if (row % 2 !== 0) {
+                    offsetX = moduleUnit / 2;
+                }
+                
+                const centerX = col * moduleUnit + offsetX;
+                const centerY = row * moduleUnit;
+
+                let heartColor = ((row + col) % 2 === 0) ? colors.color1 : colors.color2;
+
+                drawSoftHeartModule(ctx, centerX, centerY, heartSize, heartColor);
+            }
+        }
+    }
+
+
+    /* ------------------------------------------------ */
+    /* 🖼️ 목업 갤러리 로직 (새로 추가) */
+    /* ------------------------------------------------ */
+    
+    // 목업 이미지 정보를 저장할 객체 (나중에 이미지 파일 경로로 변경)
+    const mockupData = {
+        scarf: [
+            { id: 1, name: '목도리 A', imagePath: '[여기에 목도리 이미지 1 경로]' },
+            { id: 2, name: '목도리 B', imagePath: '[여기에 목도리 이미지 2 경로]' },
+            { id: 3, name: '목도리 C', imagePath: '[여기에 목도리 이미지 3 경로]' },
+            { id: 4, name: '목도리 D', imagePath: '[여기에 목도리 이미지 4 경로]' }
+        ],
+        glove: [
+            { id: 1, name: '장갑 A', imagePath: '[여기에 장갑 이미지 1 경로]' },
+            { id: 2, name: '장갑 B', imagePath: '[여기에 장갑 이미지 2 경로]' },
+            { id: 3, name: '장갑 C', imagePath: '[여기에 장갑 이미지 3 경로]' }
+        ],
+        bowl: [
+            { id: 1, name: '그릇 A', imagePath: '[여기에 그릇 이미지 1 경로]' },
+            { id: 2, name: '그릇 B', imagePath: '[여기에 그릇 이미지 2 경로]' }
+        ]
+    };
+    
+    // 선택된 카테고리에 따라 갤러리 내용을 업데이트하는 함수
+    function showMockups(category) {
+        // 1. 버튼 활성화 상태 업데이트
+        document.querySelectorAll('.category-button').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        document.getElementById(`btn-${category}`).classList.add('active');
+        
+        // 2. 갤러리 내용 생성
+        const currentData = mockupData[category];
+        let galleryHTML = `
+            <p style="width: 100%; text-align: center; color: #fce8a9; margin-bottom: 20px;">
+                선택된 **${getCategoryName(category)}** 목업 이미지가 여기에 표시됩니다.
+                (총 ${currentData.length}개)
+            </p>
+        `;
+        
+        if (currentData.length > 0) {
+            currentData.forEach(item => {
+                // 실제 이미지를 넣을 때는 <img src="${item.imagePath}" alt="${item.name}"> 로 변경
+                // 지금은 이미지 대신 비어있는 박스로 대체합니다.
+                galleryHTML += `
+                    <div class="mockup-image-box">
+                        **${item.name}**<br>
+                        (이미지 배치 공간)<br>
+                        패턴 적용 예정
+                    </div>
+                `;
+            });
+        } else {
+             galleryHTML = `<p style="width: 100%;">이 카테고리에는 아직 목업 이미지가 없습니다.</p>`;
+        }
+
+        galleryContainer.innerHTML = galleryHTML;
+    }
+
+    // 카테고리 이름을 한글로 변환하는 헬퍼 함수
+    function getCategoryName(category) {
+        switch (category) {
+            case 'scarf': return '목도리';
+            case 'glove': return '장갑';
+            case 'bowl': return '그릇';
+            default: return '아이템';
+        }
+    }
+
+
+    // 6. 초기 실행
+    window.onload = () => {
+        initializeControls(); // UI 초기화 및 메인 캔버스 그리기
+        showMockups('scarf'); // 페이지 로드 시 목도리 갤러리를 기본으로 보여줍니다.
+    };
+
+</script>
 </body>
 </html>
