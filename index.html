@@ -7,6 +7,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
         
         body {
+            font-family: 'Jua', sans-serif;
             margin: 0;
             padding: 0;
             background-color: #F8F8F8;
@@ -249,50 +250,11 @@
 <body>
 
     <section id="title-page" class="page-section">
-        <nav style="position: fixed; top: 0; left: 0; width: 100%; background: rgba(0,0,0,0.8); padding: 10px 0; z-index: 100;">
-            <a href="#title-page" style="color: white; margin: 0 15px; text-decoration: none;">🏠 HOME</a>
-            <a href="#intro-page" style="color: white; margin: 0 15px; text-decoration: none;">💡 소개</a>
-            <a href="#editor-page" style="color: white; margin: 0 15px; text-decoration: none;">🎨 패턴 제작</a>
-            <a href="#mockup-page" style="color: white; margin: 0 15px; text-decoration: none;">🖼️ 목업</a>
-        </nav>
-        <h1>HTML CANVAS 패턴 스튜디오</h1>
-        <p>코드를 디자인하는 디자이너를 위한 패턴 제작 프로젝트</p>
-        <p class="scroll-down">아래로 스크롤하여 프로젝트를 확인하세요 ↓</p>
+        
     </section>
 
     <section id="intro-page" class="page-section">
-        <h2>💡 프로젝트 소개: HTML Canvas란?</h2>
-        <p style="font-size: 1.2em; margin-bottom: 40px; color: #f0e5d7;">
-            이 프로젝트는 **HTML Canvas**와 **JavaScript**를 활용하여 동적인 반복 패턴을 생성하는 과정을 보여줍니다.
-            Canvas는 웹 페이지에 그래픽을 그리기 위한 '빈 도화지'와 같습니다.
-        </p>
-
-        <div class="concept-box">
-            <div class="concept-item">
-                <h3>Canvas 개념</h3>
-                <p>
-                    HTML `<canvas>` 태그를 사용하여 그래픽 요소를 그릴 영역을 정의합니다.
-                    JavaScript의 **`getContext('2d')`**를 통해 2D 그래픽 컨텍스트를 가져와 선, 도형, 이미지 등을 조작합니다.
-                </p>
-            </div>
-            <div class="concept-item">
-                <h3>도형 그리기</h3>
-                <p>
-                    **`ctx.beginPath()`**로 새로운 경로를 시작하고, **`ctx.moveTo()`**, **`ctx.lineTo()`**, **`ctx.arc()`** 등의 명령어로 도형의 형태를 정의합니다.
-                    **`ctx.fillStyle`**로 색상을 지정하고 **`ctx.fill()`**을 사용해 도형을 채웁니다.
-                </p>
-            </div>
-            <div class="concept-item">
-                <h3>반복 패턴</h3>
-                <p>
-                    **`for` 반복문**을 사용하여 특정 모듈을 캔버스 크기만큼 반복적으로 그려 넣습니다.
-                    각 모듈의 위치(x, y)와 크기를 조절하여 다양한 **타일 패턴**을 생성합니다.
-                </p>
-            </div>
-        </div>
-        <div style="margin-top: 50px; text-align: center;">
-             <a href="#editor-page" class="save-button" style="width: 30%;">패턴 제작 페이지로 이동 ⬇️</a>
-        </div>
+        
     </section>
 
     <section id="editor-page" class="page-section">
